@@ -1,24 +1,26 @@
 import random
-#SC1
+
+# SC1
 class Pizza:
-    #SC3
+    # SC3
     def __init__(self, menu_code, pizza_name, inventory_count, price):
         self.menu_code = menu_code
         self.pizza_name = pizza_name
         self.inventory_count = inventory_count
         self.price = price
-#SC4
+
+    # SC4
     def toString(self):
         return f"Menu Code: {self.menu_code}, Pizza Name: {self.pizza_name}, Inventory Count: {self.inventory_count}, Price: {self.price}"
-    
-########################
-########################
-#DRIVER SECTION
-      #Enter your code below
-#SC
+
+    # SC12 (modified)
+    def __str__(self):
+        return self.toString()
+
+# SC
 def get_integer_input(prompt, error_message, min_value, max_value):
     while True:
-        try: 
+        try:
             value = int(input(prompt))
             if min_value <= value <= max_value:
                 return value
@@ -28,22 +30,24 @@ def get_integer_input(prompt, error_message, min_value, max_value):
             print(error_message)
             print(e)
 
+# SC11
 def create_pizza():
     menu_code = input("Please enter a three-letter/number menu code: ")
-    #SC9
+    # SC9
     pizza_name = input("Please enter the pizza name: ")
-    #SC10 #SC7
+    # SC10 # SC7
     inventory_count = get_integer_input("Please enter the total inventory count: ",
-   "Error: Inventory count cannot be negative.", 0,  float('inf')) 
-    #SC2 #SC5
+                                        "Error: Inventory count cannot be negative.", 0, float('inf'))
+    # SC2 # SC5
     price = round(random.uniform(10, 20), 2)
     return Pizza(menu_code, pizza_name, inventory_count, price)
-#SC11
+
+# SC11
 def main():
     try:
-        create_pizza_count = get_integer_input("How many simulated frozen pizza items do you want to create? (1-10): ", "Error: You must enter a number between 1 and 10.", 1, 10)
+        create_pizza_count = get_integer_input("How many simulated frozen pizza items do you want to create? (1-10): ",
+                                               "Error: You must enter a number between 1 and 10.", 1, 10)
         print("You entered:", create_pizza_count)
-        #SC6
     except ValueError as e:
         print(e)
         exit()
@@ -54,10 +58,14 @@ def main():
         pizza = create_pizza()
         pizzas_list.append(pizza)
 
-    #SC12
+    # SC12
     print("\nListed below is your current pizza inventory:")
     for pizza in pizzas_list:
         print(pizza)
+
+if __name__ == "__main__":
+    main()
+
 
 if __name__ == "__main__":
     main()
