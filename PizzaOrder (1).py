@@ -1,15 +1,13 @@
 import random
-import math
-
 #SC1
 class Pizza:
     #SC3
-    def getValue(self, menu_code, pizza_name, inventory_count, price):
+    def __init__(self, menu_code, pizza_name, inventory_count, price):
         self.menu_code = menu_code
         self.pizza_name = pizza_name
         self.inventory_count = inventory_count
         self.price = price
-    #SC4
+#SC4
     def toString(self):
         return f"Menu Code: {self.menu_code}, Pizza Name: {self.pizza_name}, Inventory Count: {self.inventory_count}, Price: {self.price}"
     
@@ -17,7 +15,7 @@ class Pizza:
 ########################
 #DRIVER SECTION
       #Enter your code below
-#SC8
+#SC
 def get_integer_input(prompt, error_message, min_value, max_value):
     while True:
         try: 
